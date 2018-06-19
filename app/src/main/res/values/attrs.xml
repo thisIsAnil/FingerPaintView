@@ -1,0 +1,23 @@
+<resources>
+
+
+        <declare-styleable name="VerticalSeekBar">
+            <attr name="seekBarRotation">
+
+                <enum name="ROT90" value="90" />
+                <enum name="ROT270" value="270" />
+            </attr>
+        </declare-styleable>
+        <declare-styleable name="ShaderTextView">
+            <attr name="mask_id" format="integer">
+                <enum name="normal" value="0"/>
+                <enum name="neon" value="1"/>
+                <enum name="inner" value="2"/>
+                <enum name="blur" value="3"/>
+                <enum name="emboss" value="4"/>
+                <enum name="deboss" value="5"/>
+            </attr>
+            <attr name="mask_radius" format="integer"/>
+        </declare-styleable>
+
+</resources>

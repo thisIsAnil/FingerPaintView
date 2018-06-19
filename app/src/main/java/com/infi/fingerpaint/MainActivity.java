@@ -1,28 +1,25 @@
-# FingerPaintView
+package com.infi.fingerpaint;
 
-**Android library to draw or paint using different brushes.**
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
+public class MainActivity extends AppCompatActivity {
 
-Brushes available are:
->1.Neon brush
->2.Fade brush
->3.Glow brush
->4.Blur brush
->5.Emboss brush
->6.Deboss brush
-
-
-#Screenshot
-
-<img src="images/s1.png" width="360" height="640" />   <img src="images/neon.png" width="360" height="640" />   <img src="images/glow.png" width="360" height="640" />   <img src="images/fade.png" width="360" height="640" />   <img src="images/emboss.png" width="360" height="640" />   <img src="images/deboss.png" width="360" height="640" />   <img src="images/blur.png" width="360" height="640" />   <img src="images/object.png" width="360" height="640" />  
-
-
-
-#Sample usage
-
-```
-
-DrawableOnTouchView drawableOnTouchView = new DrawableOnTouchView(this);
+    private DrawableOnTouchView drawableOnTouchView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        FrameLayout mainFrame=(FrameLayout)findViewById(R.id.main_frame);
+        try {
+            drawableOnTouchView = new DrawableOnTouchView(this);
             drawableOnTouchView.setActionListener(new DrawableOnTouchView.OnActionListener() {
                 @Override
                 public void OnCancel() {
@@ -62,14 +59,17 @@ DrawableOnTouchView drawableOnTouchView = new DrawableOnTouchView(this);
 
                 }
             });
-            drawableOnTouchView.attachCanvas();
-
             FrameLayout.LayoutParams params=new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             params.gravity= Gravity.CENTER;
 
             mainFrame.addView(drawableOnTouchView,params);
 
+            drawableOnTouchView.attachCanvas(FrameLayout.LayoutParams.MATCH_PARENT,FrameLayout.LayoutParams.MATCH_PARENT);
 
-```
+        }catch (Exception e){
+            Log.e("MainActivity",e.getMessage());
+            Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
+        }
 
->Todo: Add documentation.
+    }
+}
